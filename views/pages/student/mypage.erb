@@ -1,0 +1,21 @@
+<%= erb :'components/header',
+    :locals => {is_login: true, is_staff: false, user_name: @logined_student[:user][:name] }  %>
+<main>
+    <div class="contents-container">
+        <div class="articles-container">
+            <article>
+                <div class="title">お知らせ</div>
+                <div class="contents">
+                    <% if @notifies.length.zero? %>
+                        <div>現在はお知らせがありません。</div>
+                    <% end %>
+                    <% @notifies.each do |notify| %>
+                        <div><%= notify %></div>
+                    <% end %>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>

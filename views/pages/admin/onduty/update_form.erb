@@ -1,0 +1,35 @@
+<%= erb :'components/header',
+    :locals => {is_login: true, is_staff: true, user_name: @logined_staff[:user][:name] }  %>
+
+<main>
+    <div class="contents-container">
+        <%= erb :'components/contents_title',
+            :locals => {title: '編集フォーム(当直)' }  %>
+        <div class="contents form-container">
+            <div class="pre-sentence">スタッフを選択してください</div>
+            <div class="err"><%= @err.nil? ? '' : @err %></div>
+            <form action="/admin/onduty/update/process/?year=<%= @time[:year] %>&month=<%= @time[:month] %>&date=<%= @time[:date] %>" method="POST">
+                <div class="form-item">
+                    <div class="title">年月日</div>
+                    <div class="input" id="year"><%= @time[:year] %>年<%= @time[:month] %>月<%= @time[:date] %>日</div>
+                </div>
+                <div class="form-item">
+                    <div class="title">スタッフ</div>
+                    <select class="input" name="staff_id">
+                        <% @staffs.each do |staff| %>
+                            <option id="staff-<%= staff[:id] %>" value="<%= staff[:id] %>"><%= staff[:user][:email] %></option>
+                            <script>
+                                if ('<%= @now_staff_id == staff[:id].to_s %>' === 'true')
+                                    document.getElementById('staff-<%= staff[:id] %>').selected = true
+                            </script>
+                        <% end %>
+                    </select>
+                </div>
+                <input type="submit" value="変更">
+            </form>
+        </div>
+    </div>
+
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>
+

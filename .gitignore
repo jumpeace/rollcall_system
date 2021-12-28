@@ -1,0 +1,9 @@
+# ライブラリ
+/vendor/
+
+# データ
+/db/main.db
+/public/files/
+
+# 非公開情報
+/env.rb

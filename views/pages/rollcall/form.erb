@@ -1,0 +1,28 @@
+<%= erb :'components/header',
+    :locals => {is_login: true, is_staff: true, user_name: @logined_student[:user][:name] }  %>
+
+<main>
+    <div class="contents-container">
+        <%= erb :'components/contents_title',
+            :locals => {title: '点呼フォーム' }  %>
+        <div class="contents form-container">
+            <div class="err"><%= @err.nil? ? '' : @err %></div>
+            <form id="rollcall_form" action="/rollcall/process/" method="POST"  enctype="multipart/form-data">
+                <div class="form-item">
+                    <div class="title">学籍番号</div>
+                    <div class="input"><%= @student_id %></div>
+                </div>
+                <div style="display: flex; jusitify-content: center; align-items: center;">
+                    <video id="camera" width="300" height="200" style="padding: 0px;"></video>
+                    <canvas id="picture" width="300" height="200"></canvas>
+                </div>
+                <input type="file" id="student_img" name="student_img" style="display: none;" ></p>
+                <button type="button" id="shutter">シャッター</button>
+                <input id="rollcall_btn" type="submit" value="点呼する" style="display: none;">
+            </form>
+        </div>
+    </div>
+
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>
+<script src="/js/rollcall/form.js"></script>

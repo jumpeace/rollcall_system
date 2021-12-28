@@ -1,0 +1,26 @@
+<%= erb :'components/header', :locals => {is_login: false }  %>
+
+<main>
+    <div class="contents-container">
+        <%= erb :'components/contents_title',
+            :locals => {title: 'ログインフォーム(スタッフ)' }  %>
+        <div class="contents form-container">
+            <div class="pre-sentence">メールアドレスとパスワードを入力してください</div>
+            <form action="/staff/login/process/" method="POST">
+                <div class="form-item">
+                    <div class="title">メールアドレス</div>
+                    <input class="input" type="email" name="email"
+                        value="<%= @form_data.nil? ? '' : @form_data[:email] %>">
+                </div>
+                <div class="form-item">
+                    <div class="title">パスワード</div>
+                    <input class="input" type="password" name="passwd">
+                </div>
+                <div class="err"><%= @err.nil? ? '' : @err %></div>
+                <input type="submit" value="ログイン"></p>
+            </form>
+        </div>
+    </div>
+
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>

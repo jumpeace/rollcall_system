@@ -1,0 +1,71 @@
+<%= erb :'components/header',
+    :locals => {is_login: true, is_staff: true, user_name: @logined_staff[:user][:name] }  %>
+
+
+<main>
+    <div class="contents-container">
+        <%= erb :'components/contents_title',
+            :locals => {title: 'スタッフ管理ページ' }  %>
+        <div class="table-container">
+            <div class="controller-container">
+                <a href="/admin/staff/normal/create/form/">作成</a>
+                <form  id="delete_bulk" action="/admin/staff/delete/process/" method="POST">
+                    <input id="staff_ids_input" type="hidden" name="staff_ids">
+                    <input type="submit" value="一括削除">
+                </form>
+            </div>
+            <div class="msg-container">
+                <div class="err"><%= @err.nil? ? '' : @err %></div>
+                <div class="msg"><%= @msg.nil? ? '' : @msg %></div>
+            </div>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>　　</th>
+                        <th style="display: none;"></th>
+                        <th>メールアドレス</th>
+                        <th>名前</th>
+                        <th>管理者かどうか</th>
+                        <th>　　</th>
+                        <th>　　　　　　　</th>
+                        <th>　　</th>
+                    </tr>
+                </thead>
+                <tbody id="staffs">
+                    <% unless @staffs.nil? %>
+                        <% @staffs.each do |staff|  %>
+                            <tr>
+                                <td>
+                                    <% unless staff[:is_admin] %>
+                                        <input type="checkbox">
+                                    <% end %>
+                                </td>
+                                <td style="display: none;"><%= staff[:id] %></td>
+                                <td><%= staff[:user][:email] %></td>
+                                <td><%= staff[:user][:name] %></td>
+                                <td><%= staff[:is_admin] ? '○' : '×' %></td>
+                                <td>
+                                    <a href="/admin/staff/update/<%= staff[:id] %>/form/">編集</a>
+                                </td>
+                                <td>
+                                    <a href="/admin/staff/passwd/update/<%= staff[:id] %>/form/">パスワード編集</a>
+                                </td>
+                                <td>
+                                    <% unless staff[:is_admin] %>
+                                        <form action="/admin/staff/delete/process/" method="POST">
+                                            <input type="hidden" name="staff_ids" value="<%= staff[:id] %>">
+                                            <input type="submit" value="削除"></p>
+                                        </form>
+                                    <% end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>
+
+<script src="/js/admin/staff/root_bulk.js"></script>

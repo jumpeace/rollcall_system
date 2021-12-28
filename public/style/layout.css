@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    color: #444;
+}
+
+a {
+    cursor: pointer;
+    color: #444;
+    text-decoration: none;
+    border-bottom: 1px dashed #aaa;
+}
+a:hover {
+    border-bottom: 1px dashed #444;
+}
+a:active {
+    color: #444;
+}
+
+.err {
+    font-size: 16px;
+    color: hsl(0, 80%, 60%);
+}
+
+.msg {
+    font-size: 16px;
+    color: hsl(90, 80%, 60%);
+}
+
+body {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-rows: [header]auto [main]1fr;
+}
+
+header {
+    grid-row: header;
+}
+
+main {
+    grid-row: main;
+    display: grid;
+    grid-template-columns: [contents]1fr [links]auto;
+}
+main > .contents-container {
+    grid-column: contents;
+
+    display: grid;
+    grid-template-rows: [title]auto [contents]1fr;
+}
+
+.contents-container > .title-container {
+    grid-row: title;
+
+    padding: 15px 0px;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+}
+.title-container > .title {
+    font-size: 20px;
+    color: #444;
+    font-weight: lighter;
+    border-bottom: 1px solid #666;
+    padding: 5px 30px;
+    letter-spacing: 2px;
+}
+
+.contents-container > .contents {
+    grid-row: contents;
+}
+
+main > .links {
+    grid-column: links;
+    border-left: 1px solid #e8e8e8;
+}

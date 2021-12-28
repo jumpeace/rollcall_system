@@ -1,0 +1,27 @@
+<%= erb :'components/header',
+    :locals => {is_login: true, is_staff: true, user_name: @logined_staff[:user][:name] }  %>
+
+<main>
+    <div class="contents-container">
+        <%= erb :'components/contents_title',
+            :locals => {title: '当直管理ページ' }  %>
+        <div class="table-container">
+            <div class="search-container">
+                <input type="number" name="year" value="<%= @year.nil? ? '' : @year %>" style="width: 100px;"
+                    >年<input type="number" name="month" value="<%= @month.nil? ? '' : @month %>" style="width: 50px;">月
+            </div>
+            <table border>
+                <thead><tr>
+                    <th>日</th>
+                    <th>当直氏名</th>
+                    <th>メールアドレス</th>
+                    <th>　　　</th>
+                </tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>
+
+<script src="/js/admin/onduty/root_search.js"></script>

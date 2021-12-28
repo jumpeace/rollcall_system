@@ -1,0 +1,65 @@
+<%= erb :'components/header',
+    :locals => {is_login: true, is_staff: true, user_name: @logined_staff[:user][:name] }  %>
+
+
+<main>
+    <div class="contents-container">
+        <%= erb :'components/contents_title',
+            :locals => {title: '編集フォーム(学生)' }  %>
+        <div class="contents form-container">
+            <div class="pre-sentence">必要な情報を入力してください</div>
+            <div class="err"><%= @err.nil? ? '' : @err %></div>
+            <form action="/admin/student/update/<%= @student_id %>/process/" method="POST">
+                <div class="form-item">
+                    <div class="title">学籍番号</div>
+                    <div class="input" id="student_id"><%= @student_id %></div>
+                </div>
+
+                <div class="form-item">
+                    <div class="title">名前</div>
+                    <input class="input" type="text" name="user_name"
+                        value="<%=@form_data[:user_name] %>">
+                    <div id="user_name_error" class="ajax_err"></div>
+                </div>
+
+                <div class="form-item">
+                    <div class="title">学年</div>
+                    <input class="input" type="number" name="grade"
+                        value="<%= @form_data[:grade] %>">
+                    <div id="grade_error" class="ajax_err"></div>
+                </div>
+
+                <div class="form-item">
+                    <div class="title">学科</div>
+                    <select class="input" name="department_id">
+                        <% @departments.each do |department| %>
+                            <option id="department-<%= department[:id] %>"
+                                value="<%= department[:id] %>"><%= department[:name] %></option>
+                            <script>
+                            if ('<%= @form_data[:department_id] == department[:id].to_s %>' === 'true')
+                                    document.getElementById('department-<%= department[:id] %>').selected = true
+                            </script>
+                        <% end %>
+                    </select>
+                    <div id="department_id_error" class="ajax_err"></div>
+                </div>
+
+                <div class="form-item">
+                    <div class="title">部屋番号</div>
+                    <input class="input" type="number" name="room_num" id="room_num" autocomplete="on" list="room_auto_list"
+                        value="<%= @form_data[:room_num] %>">
+                    <datalist id="room_auto_list">
+                    </datalist>
+                    <div id="room_num_error" class="ajax_err"></div>
+                </div>
+
+                <input type="submit" value="変更">
+            </form>
+        </div>
+    </div>
+
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>
+
+<script src="/js/admin/student/update_ajax.js"></script>
+<script src="/js/admin/student/room_input_complete.js"></script>

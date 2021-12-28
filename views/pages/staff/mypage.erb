@@ -1,0 +1,32 @@
+<%= erb :'components/header',
+    :locals => {is_login: true, is_staff: true, user_name: @logined_staff[:user][:name] }  %>
+
+<main>
+    <div class="contents-container">
+        <%= erb :'components/contents_title',
+            :locals => {title: 'マイページ(スタッフ)' }  %>
+        <div class="articles-container">
+            <article>
+                <div class="title">お知らせ</div>
+                <div class="contents">
+                    <% if @notifies.length.zero? %>
+                        <div>現在はお知らせがありません。</div>
+                    <% end %>
+                    <% @notifies.each do |notify| %>
+                        <div><%= notify %></div>
+                    <% end %>
+                </div>
+            </article>
+            <article>
+                <div class="title">今後の当直の日程</div>
+                <div class="contents">
+                    <% @onduties.each do |onduty| %>
+                        <div><%= onduty[:time][:to_str] %></div>
+                    <% end %>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>

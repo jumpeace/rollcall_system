@@ -1,0 +1,12 @@
+<%= erb :'components/header',
+    :locals => {is_login: true, is_staff: false, user_name: @logined_student[:user][:name] }  %>
+<main>
+    <div class="contents-container">
+        <div style="padding: 10px;">
+            まだ点呼できません。
+            点呼時間は<%= @start_time[:hour] %>時<%= @start_time[:minute] %>分から<%= @due_time[:hour] %>時<%= @due_time[:minute] %>分までです。
+        </div>
+    </div>
+
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>

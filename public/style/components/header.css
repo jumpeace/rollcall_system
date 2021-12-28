@@ -1,0 +1,59 @@
+header {
+    height: 40px;
+    border-bottom: 2px solid #ddd;
+
+    color: #444;
+    background-color: #fff;
+
+    display: grid;
+    grid-template-columns: 15px [title] auto [controllers] 1fr [info] auto 15px;
+    align-items: center;
+}
+
+header > .title {
+    grid-column: title;
+    width: 150px;
+
+    text-shadow: 1px 1px #666;
+
+    text-align: start;
+    font-size: 20px;
+}
+nav {
+    grid-column: controllers;
+
+    font-size: 14px;
+    color: #666;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item {
+    padding: 0px 10px;
+}
+
+.nav-item + .nav-item {
+    border-left: 1px solid #444;
+}
+
+nav input[type=submit] {
+    text-align: center;
+    cursor: pointer;
+    background-color: inherit;
+    padding: 0px;
+    border: none;
+    border-bottom: 1px dashed #aaa;
+}
+nav input[type=submit]:hover {
+    border-bottom: 1px dashed #444;
+}
+
+.info {
+    grid-column: info;
+    width: 300px;
+
+    text-align: end;
+    font-size: 14px;
+}

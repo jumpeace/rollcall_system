@@ -1,0 +1,14 @@
+<%= erb :'components/header',
+    :locals => {is_login: true, is_staff: true, user_name: @logined_staff[:user][:name] }  %>
+
+<main>
+    <div class="contents-container">
+        <%= erb :'components/contents_title',
+            :locals => {title: '管理画面' }  %>
+        <div class="articles-container">
+            学生やスタッフ、当直の管理画面があります。右のリンクから選んでください。
+        </div>
+    </div>
+
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>

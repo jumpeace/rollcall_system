@@ -1,0 +1,58 @@
+<%= erb :'components/header',
+    :locals => {is_login: true, is_staff: true, user_name: @logined_staff[:user][:name] }  %>
+
+<main>
+    <div class="contents-container">
+        <%= erb :'components/contents_title',
+            :locals => {title: '点呼管理ページ' }  %>
+        <div class="table-container">
+            <div class="search-container">
+                <input type="number" name="year" value="<%= @year.nil? ? '' : @year %>" style="width: 100px;"
+                    >年<input type="number" name="month" value="<%= @month.nil? ? '' : @month %>" style="width: 50px;"
+                    >月<input type="number" name="date" value="<%= @date.nil? ? '' : @date %>" style="width: 50px;">日
+                <input type="number" name="building_num" value="<%= @building_num.nil? ? '' : @building_num %>" style="width: 50px;"
+                    >号館<input type="number" name="floor_num" value="<%= @floor_num.nil? ? '' : @floor_num %>" style="width: 50px;">階
+            </div>
+            <div class="controller-container">
+                <form id="check_bulk" method="POST">
+                    <input id="student_ids_check" type="hidden" name="student_ids">
+                    <input type="submit" value="確認">
+                </form>
+
+                <form id="forcedcheck_bulk" method="POST">
+                    <input id="student_ids_forcedcheck" type="hidden" name="student_ids">
+                    <input type="submit" value="強制確認">
+                </form>
+
+                <form id="startover_bulk" method="POST">
+                    <input id="student_ids_startover" type="hidden" name="student_ids">
+                    <input type="submit" value="やり直し">
+                </form>
+            </div>
+            <div class="msg-container">
+                <% @errs.each do |err| %>
+                    <div class="err"><%= err %></div>
+                <% end %>
+            </div>
+            <table border>
+                <thead><tr>
+                    <th>　</th>
+                    <th>部屋番号</th>
+                    <th>学籍番号</th>
+                    <th>学年</th>
+                    <th>学科</th>
+                    <th>名前</th>
+                    <th>学生写真</th>
+                    <th>学生写真（点呼時）</th>
+                    <th>点呼（学生）</th>
+                    <th>点呼確認（スタッフ）</th>
+                </tr></thead>
+                <tbody id="rollcalls"></tbody>
+            </table>
+        </div>
+    </div>
+    <%= erb :'components/links', :locals => {links: @links }  %>
+</main>
+
+<script src="/js/rollcall/list_ajax.js"></script>
+<script src="/js/rollcall/list_bulk.js"></script>

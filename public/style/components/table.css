@@ -1,0 +1,65 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 5px;
+}
+
+.table-container .controller-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.table-container .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.table-container table {
+    border-collapse: collapse;
+}
+.table-container th, .table-container td {
+    text-align: center;
+    padding: 5px 5px;
+}
+.table-container th > img {
+    padding: 0px;
+}
+
+.table-container a {
+    font-size: 14px;
+}
+.table-container input[type=submit] {
+    text-align: center;
+    cursor: pointer;
+    background-color: inherit;
+    padding: 0px;
+    border: none;
+    border-bottom: 1px dashed #aaa;
+    font-size: 14px;
+}
+.table-container input[type=submit]:hover {
+    border-bottom: 1px dashed #444;
+}
+
+.table-container table a {
+    border-bottom: none;
+    color: #888;
+}
+.table-container table a:hover {
+    color: #444;
+    border-bottom: 1px solid #444;
+}
+
+.table-container table input[type=submit] {
+    border-bottom: none;
+    color: #888;
+}
+.table-container table input[type=submit]:hover {
+    color: #444;
+    border-bottom: 1px solid #444;
+}

@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/style/components/header.css">
+
+<header>
+    <div class="title">寮点呼システム</div>
+    <nav>
+        <div class="nav-item mypage">
+            <% if locals[:is_login] %>
+                <% if locals[:is_staff] %>
+                    <a href="/staff/mypage/">マイページ</a>
+                <% else %>
+                    <a href="/student/mypage/">マイページ</a>
+                <% end %>
+            <% end %>
+        </div>
+        <div class="nav-item logout">
+            <% if locals[:is_login] %>
+                <form action="/user/logout/process/" method="POST">
+                    <p><input type="submit" value="ログアウト"></p>
+                </form>
+            <% end %>
+        </div>
+    </nav>
+    <div class="info">
+        <% if locals[:is_login] %>
+            ログイン中：<%= locals[:user_name] %>(<%= locals[:is_staff] ? 'スタッフ' : '学生' %>)</div>
+        <% else %>
+            ログインしていません
+        <% end %>
+    </div>
+</header>
