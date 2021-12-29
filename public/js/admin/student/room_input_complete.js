@@ -22,7 +22,7 @@
                     }
                 }
             }
-            xhr.open('GET', `http://localhost:9998/api/building/?building=${value[0]}`, true);
+            xhr.open('GET', `http://localhost:4567/api/building/?building=${value[0]}`, true);
             xhr.responseType = 'json';
             xhr.send(null);
         }
@@ -39,7 +39,7 @@
                     }
                 }
             }
-            xhr.open('GET', `http://localhost:9998/api/floor/?building=${value[0]}&floor=${value[1]}`, true);
+            xhr.open('GET', `http://localhost:4567/api/floor/?building=${value[0]}&floor=${value[1]}`, true);
             xhr.responseType = 'json';
             xhr.send(null);
         }
@@ -56,7 +56,7 @@
                     }
                 }
             }
-            xhr.open('GET', `http://localhost:9998/api/room/?building=${value[0]}&floor=${value[1]}&digit_ten=${value[2]}`, true);
+            xhr.open('GET', `http://localhost:4567/api/room/?building=${value[0]}&floor=${value[1]}&digit_ten=${value[2]}`, true);
             xhr.responseType = 'json';
             xhr.send(null);
         }

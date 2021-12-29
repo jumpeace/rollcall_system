@@ -45,7 +45,7 @@
                             <td><%= student[:room][:room] %>号室</td>
                             <td>
                                 <% unless student[:img_name].nil? %>
-                                    <img src="http://localhost:9998/files/student/<%= student[:img_name] %>" style="height: 100px; width: auto;">
+                                    <img src="http://localhost:4567/files/student/<%= student[:img_name] %>" style="height: 100px; width: auto;">
                                 <% end %>
                             <td>
                                 <a href="/admin/student/update/<%= student[:id] %>/form/">編集</a>

@@ -23,7 +23,7 @@
             if (xhr.readyState === 4 && xhr.status === 200 && !xhr.response['is_ok'])
                 dom.error.student_id.textContent = xhr.response['err']['msg']
         }
-        xhr.open('GET', `http://localhost:9998/api/valid/student/id/?id=${dom.input.student_id.value}`, true);
+        xhr.open('GET', `http://localhost:4567/api/valid/student/id/?id=${dom.input.student_id.value}`, true);
         xhr.responseType = 'json';
         xhr.send(null);
     }
@@ -34,7 +34,7 @@
             if (xhr.readyState === 4 && xhr.status === 200 && !xhr.response['is_ok'])
                     dom.error.user_name.textContent = xhr.response['err']['msg']
         }
-        xhr.open('GET', `http://localhost:9998/api/valid/user/name/?name=${dom.input.user_name.value}`, true);
+        xhr.open('GET', `http://localhost:4567/api/valid/user/name/?name=${dom.input.user_name.value}`, true);
         xhr.responseType = 'json';
         xhr.send(null);
     }
@@ -45,7 +45,7 @@
             if (xhr.readyState === 4 && xhr.status === 200 && !xhr.response['is_ok'])
                     dom.error.grade.textContent = xhr.response['err']['msg']
         }
-        xhr.open('GET', `http://localhost:9998/api/valid/student/grade/?grade=${dom.input.grade.value}`, true);
+        xhr.open('GET', `http://localhost:4567/api/valid/student/grade/?grade=${dom.input.grade.value}`, true);
         xhr.responseType = 'json';
         xhr.send(null);
     }
@@ -56,7 +56,7 @@
             if (xhr.readyState === 4 && xhr.status === 200 && !xhr.response['is_ok'])
                     dom.error.department_id.textContent = xhr.response['err']['msg']
         }
-        xhr.open('GET', `http://localhost:9998/api/valid/student/department_id/?department_id=${dom.input.department_id.value}`, true);
+        xhr.open('GET', `http://localhost:4567/api/valid/student/department_id/?department_id=${dom.input.department_id.value}`, true);
         xhr.responseType = 'json';
         xhr.send(null);
     }
@@ -67,7 +67,7 @@
             if (xhr.readyState === 4 && xhr.status === 200 && !xhr.response['is_ok'])
                     dom.error.room_num.textContent = xhr.response['err']['msg']
         }
-        xhr.open('GET', `http://localhost:9998/api/valid/student/room_num/?room_num=${dom.input.room_num.value}`, true);
+        xhr.open('GET', `http://localhost:4567/api/valid/student/room_num/?room_num=${dom.input.room_num.value}`, true);
         xhr.responseType = 'json';
         xhr.send(null);
     }
@@ -78,7 +78,7 @@
             if (xhr.readyState === 4 && xhr.status === 200 && !xhr.response['is_ok'])
                     dom.error.passwd.textContent = xhr.response['err']['msg']
         }
-        xhr.open('GET', `http://localhost:9998/api/valid/user/passwd/?raw_passwd=${dom.input.raw_passwd.value}&config_passwd=${dom.input.config_passwd.value}`, true);
+        xhr.open('GET', `http://localhost:4567/api/valid/user/passwd/?raw_passwd=${dom.input.raw_passwd.value}&config_passwd=${dom.input.config_passwd.value}`, true);
         xhr.responseType = 'json';
         xhr.send(null);
     }

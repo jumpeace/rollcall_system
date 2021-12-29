@@ -38,9 +38,9 @@
                     trDDom.appendChild(createDom('td', student.department.omit_name));
                     trDDom.appendChild(createDom('td', student.user.name));
                     trDDom.appendChild(createDom('td',
-                        student.img_name ? `<img src="http://localhost:9998/files/student/${student.img_name}" style="height: 100px; width: auto;">` : ''));
+                        student.img_name ? `<img src="http://localhost:4567/files/student/${student.img_name}" style="height: 100px; width: auto;">` : ''));
                     trDDom.appendChild(createDom('td',
-                        student.rollcall.student_img_name ? `<img src="http://localhost:9998/files/rollcall/${student.rollcall.student_img_name}" style="height: 100px; width: auto;">` : ''));
+                        student.rollcall.student_img_name ? `<img src="http://localhost:4567/files/rollcall/${student.rollcall.student_img_name}" style="height: 100px; width: auto;">` : ''));
 
                     trDDom.appendChild(createDom('td',
                         student.rollcall !== undefined ? (student.rollcall.is_student_done ? '○' : '×') : ''));
@@ -51,7 +51,7 @@
             }
         }
         xhr.open('GET',
-         `http://localhost:9998/api/rollcall/?building=${building_num}&floor=${floor_num}&year=${year}&month=${month}&&date=${date}`,
+         `http://localhost:4567/api/rollcall/?building=${building_num}&floor=${floor_num}&year=${year}&month=${month}&&date=${date}`,
         true);
         xhr.responseType = 'json';
         xhr.send(null);

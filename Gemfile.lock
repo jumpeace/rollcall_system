@@ -12,7 +12,6 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    chronic (0.10.2)
     concurrent-ruby (1.1.9)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
@@ -40,8 +39,6 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     webrick (1.7.0)
-    whenever (1.0.0)
-      chronic (>= 0.6.3)
     zeitwerk (2.5.1)
 
 PLATFORMS
@@ -53,7 +50,6 @@ DEPENDENCIES
   sinatra-contrib
   sqlite3
   webrick
-  whenever
 
 BUNDLED WITH
-   2.2.20
+   2.2.22
