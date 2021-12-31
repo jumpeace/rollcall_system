@@ -6,9 +6,14 @@
             :locals => {title: 'ログインフォーム(スタッフ)' }  %>
         <div class="contents form-container">
             <div class="pre-sentence">メールアドレスとパスワードを入力してください</div>
+
+            <%# エラーメッセージがある場合はエラーメッセージを表示 %>
+            <div class="err"><%= @err.nil? ? '' : @err %></div>
+
             <form action="/staff/login/process/" method="POST">
                 <div class="form-item">
                     <div class="title">メールアドレス</div>
+                    <%# 以前の入力があればその入力を初期値として設定 %>
                     <input class="input" type="email" name="email"
                         value="<%= @form_data.nil? ? '' : @form_data[:email] %>">
                 </div>
@@ -16,7 +21,6 @@
                     <div class="title">パスワード</div>
                     <input class="input" type="password" name="passwd">
                 </div>
-                <div class="err"><%= @err.nil? ? '' : @err %></div>
                 <input type="submit" value="ログイン"></p>
             </form>
         </div>

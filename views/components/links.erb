@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/style/components/links.css">
 
 <div class="links">
+    <%# リンクの一覧をWebページの右側に表示 %>
     <% locals[:links].each do |link| %>
         <div class="link"><a href="<%= link[:path] %>"><%= link[:name] %></a></div>
     <% end %>

@@ -7,7 +7,9 @@
             :locals => {title: '編集フォーム(当直)' }  %>
         <div class="contents form-container">
             <div class="pre-sentence">スタッフを選択してください</div>
+            <%# エラーメッセージがある場合はエラーメッセージを表示 %>
             <div class="err"><%= @err.nil? ? '' : @err %></div>
+
             <form action="/admin/onduty/update/process/?year=<%= @time[:year] %>&month=<%= @time[:month] %>&date=<%= @time[:date] %>" method="POST">
                 <div class="form-item">
                     <div class="title">年月日</div>
@@ -16,8 +18,10 @@
                 <div class="form-item">
                     <div class="title">スタッフ</div>
                     <select class="input" name="staff_id">
+                        <%# スタッフの一覧をドロップダウンリストの候補に格納 %>
                         <% @staffs.each do |staff| %>
                             <option id="staff-<%= staff[:id] %>" value="<%= staff[:id] %>"><%= staff[:user][:email] %></option>
+                            <%# 元の情報か以前の入力似合わせてドロップダウンリストの初期選択を変更 %>
                             <script>
                                 if ('<%= @now_staff_id == staff[:id].to_s %>' === 'true')
                                     document.getElementById('staff-<%= staff[:id] %>').selected = true

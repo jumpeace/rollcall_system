@@ -15,7 +15,9 @@
             </div>
 
             <div class="msg-container">
+                <%# エラーメッセージがある場合はエラーメッセージを表示 %>
                 <div class="err"><%= @err.nil? ? '' : @err %></div>
+                <%# 成功メッセージがある場合は成功メッセージを表示 %>
                 <div class="msg"><%= @msg.nil? ? '' : @msg %></div>
             </div>
 
@@ -44,6 +46,7 @@
                             <td><%= student[:department][:name] %>（<%= student[:department][:omit_name] %>）</td>
                             <td><%= student[:room][:room] %>号室</td>
                             <td>
+                                <%# 学生の画像がある場合は表示し, ない場合は何も表示しない %>
                                 <% unless student[:img_name].nil? %>
                                     <img src="http://localhost:4567/files/student/<%= student[:img_name] %>" style="height: 100px; width: auto;">
                                 <% end %>

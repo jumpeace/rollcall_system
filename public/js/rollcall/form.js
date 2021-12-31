@@ -1,4 +1,5 @@
 {
+    // 使用するDOMを保持
     const dom = {
         video: document.getElementById('camera'),
         canvas: document.getElementById('picture'),
@@ -7,43 +8,43 @@
         rollcallBtn: document.getElementById('rollcall_btn'),
     }
 
-    /** カメラ設定 */
+    // カメラ設定の設定
     const setting = {
         audio: false,
         video: {
             width: 300,
             height: 200,
-            facingMode: 'user'   // フロントカメラを利用する
+            facingMode: 'user'
         }
     };
 
-    /**
-     * カメラを<video>と同期
-     */
+    // カメラをビデオと同期
     navigator.mediaDevices.getUserMedia(setting)
         .then( (stream) => {
             dom.video.srcObject = stream;
             dom.video.onloadedmetadata = (e) => dom.video.play();
     })
 
-    /**
-     * シャッターボタン
-     */
+    // シャッターボタンが押された場合
     dom.shutterBtn.addEventListener('click', () => {
+        // canvasのコンテキスト要素を取得
         const ctx = dom.canvas.getContext('2d');
 
-        dom.video.pause();  // 映像を停止
+        // 映像を500ミリ秒停止
+        dom.video.pause();  
         setTimeout(() => dom.video.play(), 500);
 
         // canvasに画像を貼り付ける
         ctx.drawImage(dom.video, 0, 0, dom.canvas.width, dom.canvas.height);
 
+        // canvasを利用してファイルの入力欄に画像を挿入する
         dom.canvas.toBlob((blob) => {
             const file = new File([blob], 'a.png');
             const dt = new DataTransfer();
             dt.items.add(file);
-            // document.getElementById('student_img').files = dt.files;
             dom.fileInput.files = dt.files;
+
+            // 点呼ボタンを表示する
             dom.rollcallBtn.style.display = 'block';
         });
     });

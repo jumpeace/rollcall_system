@@ -15,13 +15,16 @@
                 </form>
             </div>
             <div class="msg-container">
+                <%# エラーメッセージがある場合はエラーメッセージを表示 %>
                 <div class="err"><%= @err.nil? ? '' : @err %></div>
+                <%# 成功メッセージがある場合は成功メッセージを表示 %>
                 <div class="msg"><%= @msg.nil? ? '' : @msg %></div>
             </div>
             <table border="1">
                 <thead>
                     <tr>
                         <th>　　</th>
+                        <%# スタッフIDは表示しない %>
                         <th style="display: none;"></th>
                         <th>メールアドレス</th>
                         <th>名前</th>
@@ -36,10 +39,12 @@
                         <% @staffs.each do |staff|  %>
                             <tr>
                                 <td>
+                                    <%# 管理者でない場合のみチェックボックスが表示される %>
                                     <% unless staff[:is_admin] %>
                                         <input type="checkbox">
                                     <% end %>
                                 </td>
+                                <%# スタッフIDは表示しない %>
                                 <td style="display: none;"><%= staff[:id] %></td>
                                 <td><%= staff[:user][:email] %></td>
                                 <td><%= staff[:user][:name] %></td>
@@ -51,6 +56,7 @@
                                     <a href="/admin/staff/passwd/update/<%= staff[:id] %>/form/">パスワード編集</a>
                                 </td>
                                 <td>
+                                    <%# 管理者でない場合のみ削除ボタンが表示される %>
                                     <% unless staff[:is_admin] %>
                                         <form action="/admin/staff/delete/process/" method="POST">
                                             <input type="hidden" name="staff_ids" value="<%= staff[:id] %>">

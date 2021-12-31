@@ -87,5 +87,5 @@ INSERT INTO floors(building_num, floor_num) VALUES (2, 1);
 
 INSERT INTO rooms(floor_id, room_num, person_max) VALUES (1, 1, 1);
 INSERT INTO rooms(floor_id, room_num, person_max) VALUES (2, 2, 2);
-INSERT INTO rooms(floor_id, room_num, person_max) VALUES (2, 1, 2);
+INSERT INTO rooms(floor_id, room_num, person_max) VALUES (2, 11, 1);
 INSERT INTO rooms(floor_id, room_num, person_max) VALUES (3, 1, 1);

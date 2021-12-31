@@ -6,16 +6,22 @@
         <%= erb :'components/contents_title',
             :locals => {title: '点呼フォーム' }  %>
         <div class="contents form-container">
+            <%# エラーメッセージがある場合はエラーメッセージを表示 %>
             <div class="err"><%= @err.nil? ? '' : @err %></div>
+
             <form id="rollcall_form" action="/rollcall/process/" method="POST"  enctype="multipart/form-data">
                 <div class="form-item">
                     <div class="title">学籍番号</div>
+                    <%# 現在の学籍番号を表示 %>
                     <div class="input"><%= @student_id %></div>
                 </div>
                 <div style="display: flex; jusitify-content: center; align-items: center;">
+                    <%# カメラ %>
                     <video id="camera" width="300" height="200" style="padding: 0px;"></video>
+                    <%# 撮影した画像を表示 %>
                     <canvas id="picture" width="300" height="200"></canvas>
                 </div>
+                <%# 送信する画像を保持する入力部品 %>
                 <input type="file" id="student_img" name="student_img" style="display: none;" ></p>
                 <button type="button" id="shutter">シャッター</button>
                 <input id="rollcall_btn" type="submit" value="点呼する" style="display: none;">

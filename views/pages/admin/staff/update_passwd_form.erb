@@ -6,10 +6,13 @@
             :locals => {title: 'パスワード編集フォーム(スタッフ)' }  %>
         <div class="contents form-container">
             <div class="pre-sentence">現在のパスワードと新しいパスワードを入力してください</div>
+            <%# エラーメッセージがある場合はエラーメッセージを表示 %>
             <div class="err"><%= @err.nil? ? '' : @err %></div>
+
             <form action="/admin/staff/passwd/update/<%= @staff[:id] %>/process/" method="POST">
                 <div class="form-item">
                     <div class="title">メールアドレス</div>
+                    <%# 現在のメールアドレスを表示 %>
                     <div class="input"><%= @staff[:user][:email] %></div>
                 </div>
 
@@ -21,6 +24,7 @@
                 <div class="form-item">
                     <div class="title">新しいパスワード</div>
                     <input class="input" type="password" name="new_passwd">
+                    <%# パスワードのバリデーション失敗時のメッセージ(Ajaxで取得)を表示 %>
                     <div id="passwd_error" class="ajax_err"></div>
                 </div>
 

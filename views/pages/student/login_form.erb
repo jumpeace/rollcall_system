@@ -5,10 +5,14 @@
         <%= erb :'components/contents_title',
             :locals => {title: 'ログインフォーム(学生)' }  %>
         <div class="contents form-container">
+            <%# エラーメッセージがある場合はエラーメッセージを表示 %>
+            <div class="err"><%= @err.nil? ? '' : @err %></div>
+
             <div class="pre-sentence">学籍番号とパスワードを入力してください</div>
             <form action="/student/login/process/" method="POST">
                 <div class="form-item">
                     <div class="title">学籍番号</div>
+                    <%# 以前の入力があればその入力を初期値として設定 %>
                     <input class="input" type="number" name="student_id"
                     value="<%= @form_data.nil? ? '' : @form_data[:student_id] %>">
                 </div>
@@ -16,7 +20,6 @@
                     <div class="title">パスワード</div>
                     <input class="input" type="password" name="passwd">
                 </div>
-                <div class="err"><%= @err.nil? ? '' : @err %></div>
                 <input type="submit" value="ログイン"></p>
             </form>
         </div>

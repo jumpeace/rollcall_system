@@ -8,29 +8,37 @@
             :locals => {title: '編集フォーム(学生)' }  %>
         <div class="contents form-container">
             <div class="pre-sentence">必要な情報を入力してください</div>
+            <%# エラーメッセージがある場合はエラーメッセージを表示 %>
             <div class="err"><%= @err.nil? ? '' : @err %></div>
+
             <form action="/admin/student/update/<%= @student_id %>/process/" method="POST">
                 <div class="form-item">
                     <div class="title">学籍番号</div>
+                    <%# 現在の学籍番号を表示 %>
                     <div class="input" id="student_id"><%= @student_id %></div>
                 </div>
 
                 <div class="form-item">
                     <div class="title">名前</div>
+                    <%# 元の情報か以前の入力を初期値として設定 %>
                     <input class="input" type="text" name="user_name"
                         value="<%=@form_data[:user_name] %>">
+                    <%# 名前のバリデーション失敗時のメッセージ(Ajaxで取得)を表示 %>
                     <div id="user_name_error" class="ajax_err"></div>
                 </div>
 
                 <div class="form-item">
                     <div class="title">学年</div>
+                    <%# 元の情報か以前の入力を初期値として設定 %>
                     <input class="input" type="number" name="grade"
                         value="<%= @form_data[:grade] %>">
+                    <%# 学年のバリデーション失敗時のメッセージ(Ajaxで取得)を表示 %>
                     <div id="grade_error" class="ajax_err"></div>
                 </div>
 
                 <div class="form-item">
                     <div class="title">学科</div>
+                    <%# 元の情報か以前の入力を初期値として設定 %>
                     <select class="input" name="department_id">
                         <% @departments.each do |department| %>
                             <option id="department-<%= department[:id] %>"
@@ -41,15 +49,19 @@
                             </script>
                         <% end %>
                     </select>
+                    <%# 学科のバリデーション失敗時のメッセージ(Ajaxで取得)を表示 %>
                     <div id="department_id_error" class="ajax_err"></div>
                 </div>
 
                 <div class="form-item">
                     <div class="title">部屋番号</div>
+                    <%# 元の情報か以前の入力を初期値として設定 %>
                     <input class="input" type="number" name="room_num" id="room_num" autocomplete="on" list="room_auto_list"
                         value="<%= @form_data[:room_num] %>">
+                    <%# 入力補完が追加されるDOM %>
                     <datalist id="room_auto_list">
                     </datalist>
+                    <%# 部屋番号のバリデーション失敗時のメッセージ(Ajaxで取得)を表示 %>
                     <div id="room_num_error" class="ajax_err"></div>
                 </div>
 

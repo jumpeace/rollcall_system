@@ -6,6 +6,7 @@
         <%= erb :'components/contents_title',
             :locals => {title: '当直管理ページ' }  %>
         <div class="table-container">
+            <%# 検索条件を入力する部分 %>
             <div class="search-container">
                 <input type="number" name="year" value="<%= @year.nil? ? '' : @year %>" style="width: 100px;"
                     >年<input type="number" name="month" value="<%= @month.nil? ? '' : @month %>" style="width: 50px;">月

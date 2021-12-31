@@ -7,3 +7,6 @@
 
 # 非公開情報
 /env.rb
+
+# エディタ
+/.VSCodeCounter/

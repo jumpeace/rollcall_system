@@ -8,12 +8,16 @@ class Student < ActiveRecord::Base
 end
 
 class StudentModel
+  # 取得処理での返り値に利用
   def self.get_formatter(record, is_format)
     ng_result = is_format ? {} : nil
 
+    # レコードがない場合はないことを返す
     return ng_result if record.nil?
+    # プログラム上で扱いやすい形式に変えないときはレコードのまま返す
     return record unless is_format
 
+    # プログラム上で扱いやすい形式に変えるときは変えて返す
     get_result = {}
 
     get_result[:user] = UserModel.get_by_id(record.user_id, is_format: true)
@@ -30,16 +34,19 @@ class StudentModel
     }
   end
 
+  # IDによって学生を取得する
   def self.get_by_id(id, is_format: false)
     record = Student.find_by(id: id)
     StudentModel.get_formatter(record, is_format)
   end
 
+  # ユーザーIDによって学生を取得する
   def self.get_by_user_id(user_id, is_format: false)
     record = Student.find_by(user_id: user_id)
     StudentModel.get_formatter(record, is_format)
   end
 
+  # 号館の番号と階の番号によって複数の学生を取得する
   def self.gets_by_building_floor(building_num, floor_num, is_format: false)
     result = {
       building_num: building_num,
@@ -49,6 +56,7 @@ class StudentModel
     }
 
     get_result = {}
+    # 階を取得する
     get_result[:floor] = FloorModel.get_by_building_floor(building_num, floor_num)
     return result if get_result[:floor].nil?
 
@@ -62,6 +70,7 @@ class StudentModel
     result
   end
 
+  # 部屋IDによって学生を取得する
   def self.gets_by_room(room_id, is_format: false)
     result = {
       student_count: 0,
@@ -76,6 +85,7 @@ class StudentModel
     result
   end
 
+  # 学生一覧を取得する
   def self.gets_all(is_format: false)
     result = {
       student_count: 0,
@@ -90,7 +100,9 @@ class StudentModel
     result
   end
 
+  # 学生を作成する
   def self.create(info)
+    # 学籍番号からメールアドレスを取得する
     info[:email] = "#{info[:student_id]}@g.nagano-nct.ac.jp"
     info[:is_staff] = false
     user_id = UserModel.create(info)
@@ -107,6 +119,7 @@ class StudentModel
     record.id
   end
 
+  # 学籍番号と対応する学生を変更する
   def self.update(id, info)
     result = { is_ok: false }
 
@@ -122,6 +135,7 @@ class StudentModel
     result
   end
 
+  # 学籍番号と対応する学生を削除する
   def self.delete(id)
     result = { is_ok: false }
 
@@ -135,6 +149,7 @@ class StudentModel
     result
   end
 
+  # 学籍番号と対応する複数の学生を削除する
   def self.deletes(ids)
     result = { not_found_ids: [] }
     delete_result = {}
