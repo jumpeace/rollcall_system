@@ -48,7 +48,7 @@
                             <td>
                                 <%# 学生の画像がある場合は表示し, ない場合は何も表示しない %>
                                 <% unless student[:img_name].nil? %>
-                                    <img src="http://localhost:4567/files/student/<%= student[:img_name] %>" style="height: 100px; width: auto;">
+                                    <img src="http://localhost:9998/files/student/<%= student[:img_name] %>" style="height: 100px; width: auto;">
                                 <% end %>
                             <td>
                                 <a href="/admin/student/update/<%= student[:id] %>/form/">編集</a>

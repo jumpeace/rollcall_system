@@ -87,7 +87,7 @@
                 }
             }
         }
-        xhr.open('GET', `http://localhost:4567/api/onduty/?year=${year}&month=${month}`, true);
+        xhr.open('GET', `http://localhost:9998/api/onduty/?year=${year}&month=${month}`, true);
         xhr.responseType = 'json';
         xhr.send(null);
     }

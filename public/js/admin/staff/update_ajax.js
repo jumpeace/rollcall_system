@@ -21,7 +21,7 @@
             if (xhr.readyState === 4 && xhr.status === 200 && !xhr.response['is_ok'])
                 dom.error.user_name.textContent = xhr.response['err']['msg']
         }
-        xhr.open('GET', `http://localhost:4567/api/valid/user/name/?name=${dom.input.user_name.value}`, true);
+        xhr.open('GET', `http://localhost:9998/api/valid/user/name/?name=${dom.input.user_name.value}`, true);
         xhr.responseType = 'json';
         xhr.send(null);
     }
