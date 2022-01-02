@@ -44,8 +44,8 @@ class RollcallValid
       result = { is_ok: false }
 
       # カラムごとのバリデーション
+      RollcallValid::Fields.student(info[:student_id])
       field_result = format_field_results([
-        RollcallValid::Fields.student(info[:student_id]),
         RollcallValid::Fields.student_img(info[:student_img])
       ])
       # カラムごとのバリデーションが失敗した場合

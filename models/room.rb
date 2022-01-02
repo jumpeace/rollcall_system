@@ -90,7 +90,7 @@ class RoomModel
     result
   end
 
-  # 強姦の番号と階の番号と部屋の下2桁目によって部屋を複数取得する
+  # 号館の番号と階の番号と部屋の下2桁目によって部屋を複数取得する
   def self.gets_by_building_floor_digit_ten(building_num, floor_num, digit_ten, is_format: false)
     result = {
       building_num: building_num,

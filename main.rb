@@ -63,8 +63,8 @@ end
 # 学生かスタッフかによってデフォルトのリダイレクトurlを返す
 def get_default_url
   return '/staff/mypage/' if staff_login?
-  return '/student/mypage/' if student_login?
 
+  return '/student/mypage/' if student_login?
   nil
 end
 
@@ -98,7 +98,7 @@ namespace '/api' do
     body RoomModel.gets_by_building_floor_digit_ten(params[:building], params[:floor], params[:digit_ten].to_i, is_format: true).to_json
   end
 
-  # 年月日による当直の取得
+  # 年月による当直の取得
   get '/onduty/' do
     body OndutyModel.gets_by_year_month(params[:year].to_i, params[:month].to_i, is_format: true).to_json
   end
@@ -250,7 +250,7 @@ namespace '/student' do
     # Webページ内のリンク
     @links = [{ path: '/rollcall/form/', name: '点呼フォーム' }]
 
-    # アクセス当日の点呼a
+    # アクセス当日の点呼
     rollcall_time = RollcallController.rollcalling_time
     unless MyTime.compare_time(rollcall_time[:start][:hour], rollcall_time[:start][:minute]) == 'future'
       unless RollcallController.rollcall_today_onduty_done?(@logined_student[:id])
@@ -1033,7 +1033,7 @@ namespace '/admin' do
   end
 
   namespace '/onduty' do
-  # 当直一覧表示ページ
+    # 当直一覧表示ページ
     get '/' do
       # ログインしているスタッフ
       @logined_staff = StaffModel.get_by_user_id(session[:user_id], is_format: true)
