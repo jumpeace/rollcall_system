@@ -64,8 +64,8 @@ class StudentValid
         return result
       end
 
-      gets_result = DepartmentModel.gets_all[:departments]
       # 正しい学科が入力されていない場合はバリデーション失敗
+      gets_result = DepartmentModel.gets_all[:departments]
       unless gets_result.any? { |department| department_id.to_i == department[:id]}
         result[:err] = err_obj(400, $err_types[:VALID_ERR], msg: '正しい学科が入力されていません')
         return result

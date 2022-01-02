@@ -21,8 +21,12 @@ end
 # ユーザートークンが正しいか判定
 def valid_user_token?(trial_token, user_id)
   record = UserToken.find_by(id: trial_token)
+  # ユーザートークンと対応するレコードがなかったら無効
   return false if record.nil?
+  # ユーザーIDが異なっていたら無効
   return false if record.user_id != user_id
+  # 有効期限が過ぎていたら無効
+  return false if Time.now.to_i > record.expired_at
 
   true
 end

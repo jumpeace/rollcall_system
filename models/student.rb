@@ -148,21 +148,4 @@ class StudentModel
     result[:is_ok] = true
     result
   end
-
-  # 学籍番号と対応する複数の学生を削除する
-  def self.deletes(ids)
-    result = { not_found_ids: [] }
-    delete_result = {}
-
-    ids.each do |id|
-      delete_result[:student] = StudentModel.delete(id)
-      unless delete_result[:is_ok]
-        if delete_result[:err][:type] == 'Not Found'
-          result[:not_found_ids].push(id)
-        end
-      end
-    end
-
-    result
-  end
 end

@@ -2,8 +2,8 @@ require './controllers/onduty.rb'
 require './controllers/rollcall.rb'
 
 def exec_tasks
-  # 前回のループと同じ分かを格納
-  is_same_minute = false
+  # # 前回のループと同じ分かを格納
+  # is_same_minute = false
   # 前回のループの時間を保持
   pre_time = nil
 
