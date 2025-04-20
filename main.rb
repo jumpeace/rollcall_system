@@ -7,9 +7,9 @@ require './helpers/base.rb'
 require './controllers/student.rb'
 require './controllers/staff.rb'
 require './controllers/onduty.rb'
-require './valids/user.rb'
-require './valids/student.rb'
-require './valids/staff.rb'
+require './validations/user.rb'
+require './validations/student.rb'
+require './validations/staff.rb'
 require './models/user.rb'
 require './models/student.rb'
 require './models/staff.rb'
@@ -21,14 +21,14 @@ require './models/onduty.rb'
 
 require './helpers/user_token.rb'
 require './helpers/time.rb'
+require './helpers/task.rb'
 require './env.rb'
-require './task.rb'
 
 set :environment, :production
 # セッションの設定
 set :sessions,
   expire_after: 7200,
-  secret: $session_secret
+  secret: $session_secret # env.rbで設定が必要
 
 # スタッフとしてログインしているか判定する
 def staff_login?
