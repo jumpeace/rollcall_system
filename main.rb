@@ -862,7 +862,7 @@ namespace '/admin' do
     end
 
     namespace '/normal/create' do
-      # 普通のスタッフの作成フォーム
+      # スタッフの作成フォーム（管理者を除く）
       get '/form/' do
         # ログインしているスタッフ
         @logined_staff = StaffModel.get_by_user_id(session[:user_id], is_format: true)
@@ -888,7 +888,7 @@ namespace '/admin' do
         erb :'pages/admin/staff/normal_create_form'
       end
 
-      # 普通スタッフ作成処理
+      # スタッフ作成処理（管理者を除く）
       post '/process/' do
         # スタッフの作成処理をスタッフのControllerを利用して行う
         create_result = StaffController.create_normal({
