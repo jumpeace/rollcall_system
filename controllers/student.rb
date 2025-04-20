@@ -2,7 +2,7 @@ require './models/student.rb'
 require './controllers/user.rb'
 require './controllers/rollcall.rb'
 require './models/rollcall.rb'
-require './valids/student.rb'
+require './validations/student.rb'
 require './helpers/error.rb'
 
 class StudentController

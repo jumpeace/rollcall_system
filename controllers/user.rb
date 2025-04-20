@@ -1,5 +1,5 @@
 require './models/user.rb'
-require './valids/user.rb'
+require './validations/user.rb'
 
 class UserController
   # パスワードの更新処理

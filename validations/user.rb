@@ -1,5 +1,5 @@
 require './models/user.rb'
-require './valids/helpers.rb'
+require './validations/helpers.rb'
 require './helpers/error.rb'
 
 class UserValid

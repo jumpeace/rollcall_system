@@ -1,7 +1,7 @@
 require './models/student.rb'
 require './models/onduty.rb'
-require './valids/onduty.rb'
-require './valids/helpers.rb'
+require './validations/onduty.rb'
+require './validations/helpers.rb'
 require './helpers/error.rb'
 
 class RollcallValid

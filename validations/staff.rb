@@ -1,6 +1,6 @@
 require './models/staff.rb'
-require './valids/user.rb'
-require './valids/helpers.rb'
+require './validations/user.rb'
+require './validations/helpers.rb'
 require './helpers/error.rb'
 
 class StaffValid

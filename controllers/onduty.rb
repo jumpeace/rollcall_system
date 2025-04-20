@@ -1,5 +1,5 @@
 require './models/onduty.rb'
-require './valids/onduty.rb'
+require './validations/onduty.rb'
 require './controllers/staff.rb'
 require './helpers/error.rb'
 

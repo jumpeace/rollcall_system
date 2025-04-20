@@ -1,6 +1,6 @@
 require './models/rollcall.rb'
 require './models/onduty.rb'
-require './valids/rollcall.rb'
+require './validations/rollcall.rb'
 require './helpers/time.rb'
 
 class RollcallController
